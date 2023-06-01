@@ -10,24 +10,29 @@ import data.models.Product;
 import java.util.ArrayList;
 
 public class ShopService {
-    final CatalogDataSource catalogDataSource;
-    final CartDataSource cartDataSource;
-    final OrderDataSource orderDataSource;
+    final CatalogDataSource catalogDataSource; // Источник данных для каталога
+    final CartDataSource cartDataSource; // Источник данных для корзины
+    final OrderDataSource orderDataSource; // Источник данных для заказов
 
     public ShopService(CatalogDataSource catalogDataSource ,CartDataSource cartDataSource, OrderDataSource orderDataSource) {
         this.catalogDataSource = catalogDataSource ;
         this.cartDataSource = cartDataSource;
         this.orderDataSource = orderDataSource;
     }
+
+    // Метод для получения каталога товаров
     public ArrayList<Product> getCatalog(){
         return catalogDataSource.getCatalog();
     }
+
+    // Метод для получения содержимого корзины
     public ArrayList<CartItem> getCart(){
         return cartDataSource.getCatalog();
     }
+
+    // Метод для добавления товара в корзину
     public boolean addToCart(String productId,int count){
         ArrayList<Product> catalog = getCatalog();
-        //Обходим весь каталог и проверяем на верность данных
         for (Product p : catalog){
             if(p.id.equals(productId) && p.available && p.price == count){
                 cartDataSource.addToCart(p,count);
@@ -36,10 +41,11 @@ public class ShopService {
         }
         return false;
     }
+
+    // Метод для создания заказа
     public boolean createOrder(String name, String address, String phone, String paymentType, String deliveryTime){
-        //Метод получающий данные создаем заказ через абстрактный метод у orderDataSource
         ArrayList<CartItem> cart = getCart();
-        Order  order= new Order(name,address,phone,paymentType,deliveryTime,cart);
+        Order order= new Order(name,address,phone,paymentType,deliveryTime,cart);
         orderDataSource.createOrder(order);
         return true;
     }

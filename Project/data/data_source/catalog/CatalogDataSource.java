@@ -5,6 +5,6 @@ import data.models.Product;
 import java.util.ArrayList;
 
 public abstract class CatalogDataSource {
-    //Устанавливаем самый минимум для всех CatalogDataSourceImpl
+    //Метод для получения каталога
     public abstract ArrayList<Product> getCatalog();
 }

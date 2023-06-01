@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public class AddToCartView extends AppView {
     final ShopService shopService;
 
-    public AddToCartView(ShopService shopService) {
+    public AddToCartView(ShopService shopService)
+    {
         super("Add to cart", new ArrayList<>());
         this.shopService = shopService;
     }

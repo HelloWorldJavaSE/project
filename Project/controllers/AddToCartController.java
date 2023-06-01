@@ -5,15 +5,14 @@ import service.ShopService;
 import java.util.Scanner;
 
 public class AddToCartController {
-    public ShopService shopService;
+    public ShopService shopService; // Сервис для работы с магазином
 
     public AddToCartController(ShopService shopService) {
         this.shopService = shopService;
     }
 
+    // Метод для добавления товара в корзину
     public boolean addToCart() {
-        //Это метод который будет вызываться у appView.children
-        //Получаем все данные от пользователя затем используя их создаем заказ через shopService.addToCart
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter product id: ");
         String productId = scanner.nextLine();

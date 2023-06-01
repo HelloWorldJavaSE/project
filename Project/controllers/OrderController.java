@@ -5,14 +5,14 @@ import service.ShopService;
 import java.util.Scanner;
 
 public class OrderController {
-    public final ShopService shopService;
+    public final ShopService shopService; // Сервис для работы с магазином
+
     public OrderController(ShopService shopService){
         this.shopService = shopService;
     }
 
+    // Метод для создания заказа
     public boolean createOrder(){
-        //Это метод который будет вызываться у appView.children
-        //Получаем все данные от пользователя затем используя их создаем заказ через shopService.createOrder
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter name:");
         String name = scanner.nextLine();

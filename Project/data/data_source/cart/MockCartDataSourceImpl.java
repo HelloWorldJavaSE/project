@@ -6,14 +6,15 @@ import data.models.Product;
 import java.util.ArrayList;
 
 public class MockCartDataSourceImpl extends CartDataSource{
-    //Реализуем весь минимум для работы установленый в абстрактном классе CartDataSource
-    private ArrayList<CartItem> cart = new ArrayList<>();
+    private ArrayList<CartItem> cart = new ArrayList<>(); // Список элементов корзины
 
+    // Метод для получения содержимого корзины
     @Override
     public ArrayList<CartItem> getCatalog() {
         return cart;
     }
 
+    // Метод для добавления товара в корзину
     @Override
     public void addToCart(Product product, int count) {
         cart.add(new CartItem(product,count));

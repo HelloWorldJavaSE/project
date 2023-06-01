@@ -1,9 +1,8 @@
 package data.models;
-
+//Корзина с товарами
 public class CartItem {
-    //корзина с товарами
-    public final Product product;
-    public final int count;
+    public final Product product; // Товар
+    public final int count; // Количество товара
 
     public CartItem(Product product, int count) {
         this.product = product;

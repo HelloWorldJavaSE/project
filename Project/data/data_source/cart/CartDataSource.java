@@ -6,7 +6,9 @@ import data.models.Product;
 import java.util.ArrayList;
 
 public abstract class CartDataSource {
-    //Устанавливаем самый минимум для всех CartDataSourceImpl
+    // Абстрактный метод для получения содержимого корзины
     public abstract ArrayList<CartItem> getCatalog();
+
+    // Абстрактный метод для добавления товара в корзину
     public abstract void addToCart(Product product, int count);
 }

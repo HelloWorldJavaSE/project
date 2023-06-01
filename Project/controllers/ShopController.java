@@ -7,26 +7,27 @@ import java.util.Scanner;
 
 public class ShopController {
 
-    final AppView appView;
-    public final ShopService shopService;
+    final AppView appView; // Представление магазина
+    public final ShopService shopService; // Сервис для работы с магазином
 
     public ShopController(AppView appView, ShopService shopService) {
         this.appView = appView;
         this.shopService = shopService;
     }
+
+    // Метод для запуска магазина
     public void run(){
         while (true){
-            appView.action();
-            appView.displayChildren();
+            appView.action(); // Выполнение действия текущего представления
+            appView.displayChildren(); // Отображение дочерних представлений
             Scanner scanner = new Scanner(System.in);
             int value = scanner.nextInt();
             if (value < 0 || value>appView.children.size()+1){
                 System.out.println("Wrong value!");
             } else if (value == appView.children.size()+1) {
-                /* Если значение веденное пользователем больше числа детей ( это кнопка Back ) */ break;
+                break; // Выход из цикла при выборе кнопки "Назад"
             }else {
-                //Запускаем этот же метод только уже у appView.children
-                new ShopController(appView.children.get(value-1),shopService).run();
+                new ShopController(appView.children.get(value-1),shopService).run(); // Запуск выбранного дочернего представления
             }
         }
     }

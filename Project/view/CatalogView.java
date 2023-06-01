@@ -6,16 +6,16 @@ import service.ShopService;
 import java.util.ArrayList;
 
 public class CatalogView extends AppView {
-    final ShopService shopService;
+    final ShopService shopService; // Сервис для работы с магазином
 
     public CatalogView(ShopService shopService,ArrayList<AppView> children) {
         super("Catalog",children);
         this.shopService =shopService;
     }
 
+    // Метод для отображения каталога товаров
     @Override
     public void action() {
-        //Отображаем наш каталог обходя все его товары
         ArrayList<Product> products = shopService.getCatalog();
         System.out.println("--- Catalog ---");
         for (Product p : products){
